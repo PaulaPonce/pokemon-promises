@@ -1,13 +1,14 @@
-var pokeAbility = function(poke_url){
+$(document).ready(function(){
+	var pokeAbility = function(ability_url){
 	$.ajax({
-		url: 'poke_url',
+		url: ability_url,
 		type: 'GET',
 		dataType: 'json'
 	})
 	.done(function(data) {
 		console.log("success");
-		data.results.forEach(function(el){
-			document.write(el.abilities);
+		data.abilities.forEach(function(el){
+			document.write(el.ability.name + "<br>");
 		})
 	})
 	.fail(function() {
@@ -28,7 +29,6 @@ $.ajax({
 .done(function(respuesta) {
 	respuesta.results.forEach(function(el){
 		document.write(el.name + "<br>");
-		//document.write(el.url + "<br>");
 		pokeAbility(el.url);
 	})
 })
@@ -38,3 +38,5 @@ $.ajax({
 .always(function() {
 	console.log("complete");
 });
+
+})
